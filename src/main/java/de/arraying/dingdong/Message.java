@@ -4,6 +4,7 @@ import de.arraying.dingdong.Bot;
 import de.arraying.kotys.JSONField;
 import net.dv8tion.jda.core.entities.MessageChannel;
 
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,7 +40,17 @@ public final class Message implements Runnable {
             throw new RuntimeException("channel " + this.channel + " does not exist");
         }
         String message = content.length() > 2000 ? content.substring(0, 2000) : content;
-        channel.sendMessage(message).queue();
+        if(message.startsWith("file ")) {
+            String fileName = message.substring(5);
+            File file = new File(fileName);
+            if(!file.exists()) {
+                System.out.println("Could not run task as file " + fileName + " does not exist");
+            } else {
+                channel.sendFile(file).queue();
+            }
+        } else {
+            channel.sendMessage(message).queue();
+        }
         System.out.println("Ran task " + timestamp + " w/ " + content);
     }
 
