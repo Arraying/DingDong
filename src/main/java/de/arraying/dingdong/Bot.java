@@ -72,14 +72,16 @@ public enum Bot {
                 JSON json = messages.json(i);
                 Message message = json.marshal(Message.class);
                 if(!message.isValid()) {
+                    System.out.println("Message " + message + " is invalid");
                     continue;
                 }
                 long until = message.getMillisUntil();
                 if(until <= 0) {
+                    System.out.println("Message " + message + "'s time already occurred, not registering.");
                     continue;
                 }
                 executorService.schedule(message, until, TimeUnit.MILLISECONDS);
-                System.out.println("Scheduled " + json);
+                System.out.println("Scheduled " + message);
             }
             jda = new JDABuilder(token)
                     .setGame(Game.playing("the waiting game"))

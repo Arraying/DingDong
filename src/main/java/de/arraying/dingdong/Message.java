@@ -46,12 +46,21 @@ public final class Message implements Runnable {
             if(!file.exists()) {
                 System.out.println("Could not run task as file " + fileName + " does not exist");
             } else {
-                channel.sendFile(file).queue();
+                channel.sendFile(file).queue(success -> System.out.println("Message sent for " + toString()), Throwable::printStackTrace);
             }
         } else {
             channel.sendMessage(message).queue();
         }
-        System.out.println("Ran task " + timestamp + " w/ " + content);
+        System.out.println("Ran task " + toString());
+    }
+
+    /**
+     * Converts the message to string.
+     * @return The string representation.
+     */
+    @Override
+    public String toString() {
+        return timestamp + " w/ " + content;
     }
 
     /**
