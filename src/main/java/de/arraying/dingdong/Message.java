@@ -1,8 +1,7 @@
 package de.arraying.dingdong;
 
-import de.arraying.dingdong.Bot;
 import de.arraying.kotys.JSONField;
-import net.dv8tion.jda.core.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.MessageChannel;
 
 import java.io.File;
 import java.text.ParseException;

@@ -2,15 +2,14 @@ package de.arraying.dingdong;
 
 import de.arraying.kotys.JSON;
 import de.arraying.kotys.JSONArray;
-import net.dv8tion.jda.core.JDA;
-import net.dv8tion.jda.core.JDABuilder;
-import net.dv8tion.jda.core.entities.Game;
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.entities.Activity;
 
 import javax.security.auth.login.LoginException;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -84,7 +83,7 @@ public enum Bot {
                 System.out.println("Scheduled " + message);
             }
             jda = new JDABuilder(token)
-                    .setGame(Game.playing("the waiting game"))
+                    .setActivity(Activity.playing("the waiting game"))
                     .build()
                     .awaitReady();
         } catch(IOException | InterruptedException | LoginException exception) {

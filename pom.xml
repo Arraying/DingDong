@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.arraying</groupId>
     <artifactId>dingdong</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <repositories>
         <repository>
             <id>jcenter</id>
@@ -21,7 +21,7 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>3.8.1_439</version>
+            <version>4.0.0_56</version>
         </dependency>
         <dependency>
             <groupId>com.github.arraying</groupId>
