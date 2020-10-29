@@ -82,7 +82,7 @@ public enum Bot {
                 executorService.schedule(message, until, TimeUnit.MILLISECONDS);
                 System.out.println("Scheduled " + message);
             }
-            jda = new JDABuilder(token)
+            jda = JDABuilder.createDefault(token)
                     .setActivity(Activity.playing("the waiting game"))
                     .build()
                     .awaitReady();
